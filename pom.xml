@@ -40,6 +40,12 @@
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.connector}</version>
             </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok}</version>
+                <scope>provided</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -47,6 +53,7 @@
         <java.version>1.8</java.version>
         <spring.boot.parent>2.1.0.RELEASE</spring.boot.parent>
         <mysql.connector>8.0.13</mysql.connector>
+        <lombok>1.18.4</lombok>
     </properties>
 
     <build>
