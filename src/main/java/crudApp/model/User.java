@@ -18,6 +18,14 @@ public class User {
     private String login;
     @Column(name = "Password")
     private String password;
+    @Enumerated(EnumType.STRING)
     @Column(name = "Role")
     private Role role;
+
+    public User(String email, String login, String password, Role role) {
+        this.email = email;
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
 }
