@@ -1,30 +1,33 @@
-
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
+    <meta name="description" content="crudApp">
+    <meta name="author" content="amandzhi">
     <title>CRUDApp</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/crudApp.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="bg-light">
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0 bg-dark shadow-none text-white-50" href="#">CRUDApp</a>
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Log out</a>
-        </li>
-      </ul>
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand col-sm-3 col-md-2 mr-0 bg-dark shadow-none text-white-50" href="#">CRUDApp</a>
+            </div>
+            <ul class="nav navbar-nav px-3">
+                <li class="nav-item text-nowrap">
+                    <a class="nav-link" href="/logOut">Logout</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <div class="container-fluid">
       <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+        <nav class="col-xs-12 col-sm-2 col-md-2 col-lg-3 d-none d-md-block bg-white sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item bg-dark text-white">
@@ -41,43 +44,52 @@
           </div>
         </nav>
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 bg-light">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom d-md-block">
+        <main role="main" class="col-xs-12 col-sm-10 col-md-10 ml-sm-auto col-lg-9 px-4 bg-light">
+          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 d-md-block">
             <div class="mb-3">
             <h1 class="h2">Admin Panel</h1>
             </div>
-            <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-toolbar mb-md-0">
               <div class="btn-group mr-2">
-                <button class="btn btn-sm btn-outline-secondary mr-2 bg-white">Users table</button>
-                <button class="btn btn-sm btn-outline-secondary text-info">New user</button>
+                <a href="/" class="btn btn-sm btn-outline-secondary bg-white border-bottom-0 btn_user p-2 border-right-0">Users table</a>
+                <a href="/newUser" class="btn btn-sm btn-outline-secondary text-info border-bottom-0 btn_user p-2">New user</a>
               </div>
             </div>
           </div>
-
-          <h6>All users</h6>
-          <div class="table-responsive">
-            <table class="table table-striped table-sm">
+          <div class="container-fluid border px-0">
+          <div class="border-bottom pt-2 pl-3">
+            <h6>All users</h6>
+          </div>
+          <div class="bg-white px-3 table-responsive">
+            <table class="table table-hover">
               <thead>
                 <tr>
                   <th>ID</th>
                   <th>Role</th>
                   <th>Login</th>
                   <th>Password</th>
+                  <th>Email</th>
                   <th>Edit</th>
                 </tr>
               </thead>
               <tbody>
                 <tr th:each="user : ${users}">
-                <td th:text="${user.Id}">Id
-                </td>
-                <td th:text="${user.role}">role</td>
-                <td th:text="${user.login}">login</td>
-                <td th:text="${user.password}">password</td>
-                <td th:text="${user.email}">email</td>
-                <td>edit</td>
-            </tr>
+                    <td th:text="${user.id}">id
+                    </td>
+                    <td th:text="${user.role}">role</td>
+                    <td th:text="${user.login}">login</td>
+                    <td th:text="${user.password}">password</td>
+                    <td th:text="${user.email}">email</td>
+                    <td>
+                      <form action="/editUser" class="form form_user" method="post">
+                        <input type="hidden" name="id" th:value="${user.id}">
+                        <button type="submit" value="Edit" class="btn btn-primary mx-auto bg-info">Edit</button>
+                      </form>
+                    </td>
+                </tr>
               </tbody>
             </table>
+          </div>
           </div>
         </main>
       </div>
