@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="crudApp">
+    <meta name="author" content="amandzhi">
+    <title>CRUDApp</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/crudApp.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand col-sm-3 col-md-2 mr-0 bg-dark shadow-none text-white-50" href="#">CRUDApp</a>
+        </div>
+        <ul class="nav navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="/logOut">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-xs-12 col-sm-2 col-md-2 col-lg-3 d-none d-md-block bg-white sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item bg-dark text-white">
+                        <a class="nav-link active text-white" href="#">
+                            Admin <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-info" href="#">
+                            User
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-xs-12 col-sm-10 col-md-10 ml-sm-auto col-lg-9 px-4 bg-light">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 d-md-block">
+                <div class="mb-3">
+                    <h1 class="h2">User page</h1>
+                </div>
+                <div>
+                    <p>Hello admin admin</p>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-3.3.1.slim.min.js"><\/script>')</script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Graphs -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+<script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            datasets: [{
+                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+                lineTension: 0,
+                backgroundColor: 'transparent',
+                borderColor: '#007bff',
+                borderWidth: 4,
+                pointBackgroundColor: '#007bff'
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false
+                    }
+                }]
+            },
+            legend: {
+                display: false,
+            }
+        }
+    });
+</script>
+</body>
+</html>

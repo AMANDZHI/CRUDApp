@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,6 +47,24 @@ public class UserController {
         repository.save(new User(email, login, password, Role.valueOf(role)));
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/getUsers");
         requestDispatcher.forward(request, response);
+    }
+
+    @PostMapping("/updateUser")
+    public void updateUser(HttpServletRequest request, HttpServletResponse response, @RequestParam String id, @RequestParam String email, @RequestParam String login, @RequestParam String password, @RequestParam String role, Model model) throws ServletException, IOException {
+        repository.save(new User(Long.parseLong(id), email, login, password, Role.valueOf(role)));
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/getUsers");
+        requestDispatcher.forward(request, response);
+    }
+
+    @GetMapping("/userPage")
+    public String userPage() {
+        return "userPage";
+    }
+
+    @GetMapping("/findById")
+    @ResponseBody
+    public User findById(Long id) {
+        return repository.findById(id).get();
     }
 
 }
