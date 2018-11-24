@@ -1,8 +1,8 @@
-package crudApp;
+package crudApp.controller;
 
 import crudApp.model.Role;
 import crudApp.model.User;
-import crudApp.repository.UserRepository;
+import crudApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +21,7 @@ import java.io.IOException;
 public class UserController {
 
     @Autowired
-    private UserRepository repository;
+    private UserService repository;
 
     @GetMapping("/newUser")
     public String newUser(Model model) {

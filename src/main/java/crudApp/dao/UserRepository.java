@@ -1,4 +1,4 @@
-package crudApp.repository;
+package crudApp.dao;
 
 import crudApp.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
