@@ -15,4 +15,26 @@ $(document).ready(function () {
 
         $('.myForm #exampleModal').modal();
     });
+
+
+    $(".ajax-link").click(function () {
+        var info = $(this).attr("href") + "#content";
+        $("#content").hide("fast", loadContent);
+
+        function loadContent() {
+            $("#content").load(info, "", function () {
+                $("#content").show("normal");
+            })
+        }
+    });
+
+    // function doAjax() {
+    //     $.ajax({
+    //         url: 'checkStrength',
+    //         data: ({password : $('#password').val()}),
+    //         success: function (data) {
+    //             $('#strengthValue').html(data);
+    //         }
+    //     });
+    // };
 });

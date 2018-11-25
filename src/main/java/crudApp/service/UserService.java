@@ -11,4 +11,6 @@ public interface UserService {
     User save(User user);
 
     Optional<User> findById(Long id);
+
+    User findByLogin(String login);
 }

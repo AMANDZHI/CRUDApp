@@ -23,23 +23,47 @@ public class UserController {
     @Autowired
     private UserService repository;
 
+    @GetMapping("/login")
+    public String getStart(Model model) {
+        return "login";
+    }
+
+    @GetMapping("/logOut")
+    public String logout(Model model) {
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String good(Model model) {
+        Iterable<User> users = repository.findAll();
+        model.addAttribute("users", users);
+        return "main";
+    }
+
     @GetMapping("/newUser")
     public String newUser(Model model) {
         return "newUser";
     }
 
     @GetMapping("/")
+    public String home(Model model) {
+        Iterable<User> users = repository.findAll();
+        model.addAttribute("users", users);
+        return "main";
+    }
+
+    @GetMapping("/main")
     public String main(Model model) {
         Iterable<User> users = repository.findAll();
         model.addAttribute("users", users);
-        return "index";
+        return "main";
     }
 
     @PostMapping("/getUsers")
     public String getUsers(Model model) {
         Iterable<User> users = repository.findAll();
         model.addAttribute("users", users);
-        return "index";
+        return "main";
     }
 
     @PostMapping("/addNewUser")
@@ -67,4 +91,13 @@ public class UserController {
         return repository.findById(id).get();
     }
 
+    @GetMapping("/checkStrength")
+    @ResponseBody
+    public String checkStrength(@RequestParam String password) {
+        if (password.length() < 4) {
+            return "слабый";
+        } else {
+            return "сильный";
+        }
+    }
 }
