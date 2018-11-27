@@ -19,10 +19,7 @@
             </div>
             <ul class="nav navbar-nav px-3">
                 <li class="nav-item text-nowrap">
-                    <a class="nav-link" href="/logOut">Logout</a>
-                    <!--<form th:action="@{/logout}" method="post">-->
-                        <!--<input type="submit" value="Sign Out"/>-->
-                    <!--</form>-->
+                    <a class="nav-link" href="/logout">Logout</a>
                 </li>
             </ul>
         </div>
@@ -47,7 +44,7 @@
           </div>
         </nav>
 
-        <main role="main" class="col-xs-12 col-sm-10 col-md-10 ml-sm-auto col-lg-9 px-4 bg-light">
+        <main class="col-xs-12 col-sm-10 col-md-10 ml-sm-auto col-lg-9 px-4 bg-light pt-0">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 d-md-block">
             <div class="mb-3">
               <h1 class="h2">Admin Panel</h1>
@@ -79,8 +76,8 @@
                   <tr th:each="user : ${users}">
                       <td th:text="${user.id}">id
                       </td>
-                      <td th:text="${user.role}">role</td>
-                      <td th:text="${user.login}">login</td>
+                      <td th:text="${user.roles}">role</td>
+                      <td th:text="${user.username}">login</td>
                       <td th:text="${user.password}">password</td>
                       <td th:text="${user.email}">email</td>
                       <td>

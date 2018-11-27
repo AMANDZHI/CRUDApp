@@ -43,7 +43,7 @@
             </div>
         </nav>
 
-        <main role="main" class="col-xs-12 col-sm-10 col-md-10 ml-sm-auto col-lg-9 px-4 bg-light">
+        <main class="col-xs-12 col-sm-10 col-md-10 ml-sm-auto col-lg-9 px-4 bg-light pt-0">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 d-md-block">
                 <div class="mb-3">
                     <h1 class="h2">Admin Panel</h1>
@@ -71,13 +71,12 @@
 
                             <div class="mb-3 form-group">
                                 <label for="login" class="control-label">Login</label>
-                                <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
+                                <input type="text" class="form-control" id="login" name="username" placeholder="Login" required>
                             </div>
 
                             <div class="mb-3 form-group">
                                 <label for="password" class="control-label">Password</label>
-                                <input type="text" class="form-control" id="password" name="password" placeholder="Password" onkeyup="doAjax()" required>
-                                <span id="strengthValue"></span>
+                                <input type="text" class="form-control" id="password" name="password" placeholder="Password" required>
                             </div>
 
                             <div class="mb-3 form-group">
@@ -99,9 +98,5 @@
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script th:src="@{js/myJs.js}" src="js/myJs.js"></script>
-
-<script>
-
-    </script>
   </body>
 </html>
