@@ -17,8 +17,10 @@ $(document).ready(function () {
     });
 
 
-    $(".ajax-link").click(function () {
-        var info = $(this).attr("href") + "#content";
+    $(".ajax-link").click(function (e) {
+        e.preventDefault();
+
+        var info = $(this).attr("href") + " #content";
         $("#content").hide("fast", loadContent);
 
         function loadContent() {
