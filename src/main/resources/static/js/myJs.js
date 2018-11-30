@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
     $('.table .eBtn').on('click', function(event) {
         event.preventDefault();
@@ -15,28 +13,4 @@ $(document).ready(function () {
 
         $('.myForm #exampleModal').modal();
     });
-
-
-    $(".ajax-link").click(function (e) {
-        e.preventDefault();
-
-        var info = $(this).attr("href") + " #content";
-        $("#content").hide("fast", loadContent);
-
-        function loadContent() {
-            $("#content").load(info, "", function () {
-                $("#content").show("normal");
-            })
-        }
-    });
-
-    // function doAjax() {
-    //     $.ajax({
-    //         url: 'checkStrength',
-    //         data: ({password : $('#password').val()}),
-    //         success: function (data) {
-    //             $('#strengthValue').html(data);
-    //         }
-    //     });
-    // };
 });

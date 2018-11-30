@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
@@ -8,7 +8,7 @@
     <title>CRUDApp</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/crudApp.css" rel="stylesheet">
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/dashboard.css" rel="stylesheet"> 
   </head>
 
   <body class="bg-light">
@@ -31,8 +31,8 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item bg-dark text-white">
-                <a class="nav-link active text-white" href="#">
-                  Admin <span class="sr-only">(current)</span>
+                <a class="nav-link active text-white" href="/main">
+                  Admin
                 </a>
               </li>
               <li class="nav-item">
@@ -45,99 +45,128 @@
         </nav>
 
         <main class="col-xs-12 col-sm-10 col-md-10 ml-sm-auto col-lg-9 px-4 bg-light pt-0">
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 d-md-block">
-            <div class="mb-3">
-              <h1 class="h2">Admin Panel</h1>
-            </div>
-            <div class="btn-toolbar mb-md-0">
-              <div class="btn-group mr-2">
-                <a href="/main" class="ajax-link btn btn-sm btn-outline-secondary bg-white border-bottom-0 btn_user p-2 border-right-0">Users table</a>
-                <a href="/newUser" class="ajax-link  btn-sm btn-outline-secondary text-info border-bottom-0 btn_user p-2">New user</a>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Users table</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">New user</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div class="border-bottom pt-2 pl-3">
+                <h6>All users</h6>
+              </div>
+              <div class="bg-white px-3 table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Role</th>
+                      <th>Login</th>
+                      <th>Password</th>
+                      <th>Email</th>
+                      <th>Edit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.id}">id
+                        </td>
+                        <td th:text="${user.roles}">role</td>
+                        <td th:text="${user.username}">login</td>
+                        <td th:text="${user.password}">password</td>
+                        <td th:text="${user.email}">email</td>
+                        <td>
+                            <a th:href="@{findById/(id=${user.id})}" class="btn btn-primary eBtn">
+                                Edit
+                            </a>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="myForm">
+                  <form class="needs-validation"  action="/updateUser" method="post">
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                  <div class="modal-header">
+                                      <h5 class="modal-title" id="exampleModalLabel">Edit user Lorem ipsum</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                      </button>
+                                  </div>
+                                  <div class="modal-body container">
+                                      <div class="mb-3 form-group col-6 mx-auto">
+                                          <label class="control-label" for="id">ID</label>
+                                          <div class="input-group">
+                                              <input type="text" class="form-control" id="id" name="id" value="" readonly>
+                                          </div>
+                                      </div>
+
+                                      <div class="mb-3 form-group col-6 mx-auto">
+                                          <label class="control-label" for="email">Email</label>
+                                          <div class="input-group">
+                                              <input type="email" class="form-control" id="email" name="email" value="">
+                                          </div>
+                                      </div>
+
+                                      <div class="mb-3 form-group col-6 mx-auto">
+                                          <label class="control-label" for="login">Login</label>
+                                          <input type="text" class="form-control" id="login" name="login" value="">
+                                      </div>
+
+                                      <div class="mb-3 form-group col-6 mx-auto">
+                                          <label class="control-label" for="password">Password</label>
+                                          <input type="text" class="form-control" id="password" name="password" value="">
+                                      </div>
+
+                                      <div class="mb-3 form-group col-6 mx-auto">
+                                          <label class="control-label" for="role">Role</label>
+                                          <input type="text" class="form-control" id="role" name="role" value="">
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                      <button type="submit" class="btn btn-primary">Edit user</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </form>
               </div>
             </div>
-          </div>
-          <div id="content" class="container-fluid border px-0">
-            <div class="border-bottom pt-2 pl-3">
-              <h6>All users</h6>
-            </div>
-            <div class="bg-white px-3 table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Role</th>
-                    <th>Login</th>
-                    <th>Password</th>
-                    <th>Email</th>
-                    <th>Edit</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr th:each="user : ${users}">
-                      <td th:text="${user.id}">id
-                      </td>
-                      <td th:text="${user.roles}">role</td>
-                      <td th:text="${user.username}">login</td>
-                      <td th:text="${user.password}">password</td>
-                      <td th:text="${user.email}">email</td>
-                      <td>
-                          <a th:href="@{findById/(id=${user.id})}" class="btn btn-primary eBtn">
-                              Edit
-                          </a>
-                      </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="myForm">
-                <form class="needs-validation" role="form" action="/updateUser" method="post">
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Edit user Lorem ipsum</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body container">
-                                    <div class="mb-3 form-group col-6 mx-auto">
-                                        <label class="control-label" for="id">ID</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" id="id" name="id" value="" readonly>
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 form-group col-6 mx-auto">
-                                        <label class="control-label" for="email">Email</label>
-                                        <div class="input-group">
-                                            <input type="email" class="form-control" id="email" name="email" value="">
-                                        </div>
-                                    </div>
-
-                                    <div class="mb-3 form-group col-6 mx-auto">
-                                        <label class="control-label" for="login">Login</label>
-                                        <input type="text" class="form-control" id="login" name="login" value="">
-                                    </div>
-
-                                    <div class="mb-3 form-group col-6 mx-auto">
-                                        <label class="control-label" for="password">Password</label>
-                                        <input type="text" class="form-control" id="password" name="password" value="">
-                                    </div>
-
-                                    <div class="mb-3 form-group col-6 mx-auto">
-                                        <label class="control-label" for="role">Role</label>
-                                        <input type="text" class="form-control" id="role" name="role" value="">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                                    <button type="submit" class="btn btn-primary">Edit user</button>
-                                </div>
-                            </div>
-                        </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <div class="border-bottom pt-2 pl-3">
+                  <h6>Add new users</h6>
+              </div>
+              <div class="w-50 mx-auto">
+                <form class="needs-validation" action="/addNewUser" method="post">
+                  <div class="mb-3 mt-2 form-group">
+                    <label for="newEmail" class="control-label">Email</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="newEmail" name="email" placeholder="Enter email" required>
                     </div>
+                  </div>
+                  <div class="mb-3 form-group">
+                      <label for="newLogin" class="control-label">Login</label>
+                      <input type="text" class="form-control" id="newLogin" name="username" placeholder="Login" required>
+                  </div>
+                  <div class="mb-3 form-group">
+                      <label for="newPassword" class="control-label">Password</label>
+                      <input type="text" class="form-control" id="newPassword" name="password" placeholder="Password" required>
+                  </div>
+                  <div class="mb-3 form-group">
+                      <label for="newRole" class="control-label">Role</label>
+                      <input type="text" class="form-control" id="newRole" name="role" placeholder="Role">
+                  </div>
+                  <div class="mb-3 form-group">
+                      <button type="submit" class="btn btn-primary mx-auto bg-success">Add new user</button>
+                  </div>
                 </form>
+              </div>
             </div>
           </div>
         </main>
