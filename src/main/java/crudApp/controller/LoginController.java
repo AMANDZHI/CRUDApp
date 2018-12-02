@@ -15,6 +15,16 @@ public class LoginController {
 
     @PostMapping("/login")
     public String goLogin() {
-        return "main";
+        return "userPage";
+    }
+
+    @GetMapping("/userPage")
+    public String userPage() {
+        return "userPage";
+    }
+
+    @GetMapping("/")
+    public String home() {
+        return "userPage";
     }
 }

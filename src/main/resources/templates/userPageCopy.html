@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,7 +35,7 @@
                             </a>
                         </li>
                         <li class="nav-item bg-dark text-white">
-                            <a class="nav-link active text-white" href="#">
+                            <a class="nav-link active text-white" href="/userPage">
                                 User
                             </a>
                         </li>
@@ -59,6 +59,6 @@
     <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<!--<script  src="js/myJs.js"></script>-->
+<script th:src="@{js/myJs.js}" src="js/myJs.js"></script>
 </body>
 </html>
