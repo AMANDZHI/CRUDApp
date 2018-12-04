@@ -18,7 +18,6 @@ import java.util.List;
 @PreAuthorize("hasAuthority('ADMIN')")
 public class RestController {
 
-
     @Autowired
     private UserService service;
 

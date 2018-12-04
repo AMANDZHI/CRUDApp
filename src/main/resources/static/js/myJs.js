@@ -12,10 +12,11 @@ $(document).ready(function () {
                     value: id
                 },
                 success: function(user){
-                            $('.myForm #email').val(user.email)
-                            $('.myForm #login').val(user.username)
-                            $('.myForm #password').val(user.password)
-                            $('.myForm #role').val(user.roles[0])
+                            $('.myForm #id').val(user.id);
+                            $('.myForm #email').val(user.email);
+                            $('.myForm #login').val(user.username);
+                            $('.myForm #password').val(user.password);
+                            $('.myForm #role').val(user.roles[0]);
 
                         $('.myForm #exampleModal').modal();
                             editUser();
@@ -113,9 +114,7 @@ $(document).ready(function () {
                     "</tr>";
 
                 $('#usersTable .my-tbody').append(userRow);
-
-                $("#profile-tab").attr("aria-selected", false);
-                $("#home-tab").attr("aria-selected", true);
+                $('#successAddUser').modal();
             }
         });
     })

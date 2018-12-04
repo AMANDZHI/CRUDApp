@@ -26,7 +26,7 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="row">
+      <div class="row pt-2">
         <nav class="col-xs-12 col-sm-2 col-md-2 col-lg-3 d-none d-md-block bg-white sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
@@ -45,6 +45,9 @@
         </nav>
 
         <main class="col-xs-12 col-sm-10 col-md-10 ml-sm-auto col-lg-9 px-4 bg-light pt-0">
+          <div class="pt-2 mb-3">
+            <h2>Admin Panel</h2>
+          </div>
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Users table</a>
@@ -124,6 +127,17 @@
                       </div>
                   </form>
               </div>
+              <!-- <div class="modal fade" id="successAddUser" tabindex="-1" role="dialog" aria-labelledby="successAddUserLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="successAddUserLabel">Добавление прошло успешно</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                  </div>
+              </div> -->
             </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
               <div class="border-bottom pt-2 pl-3">
@@ -145,14 +159,36 @@
                       <label for="newPassword" class="control-label">Password</label>
                       <input type="text" class="form-control" id="newPassword" name="password" placeholder="Password" required>
                   </div>
-                  <div class="mb-3 form-group">
+                  <!-- <div class="mb-3 form-group">
                       <label for="newRole" class="control-label">Role</label>
                       <input type="text" class="form-control" id="newRole" name="role" placeholder="Role">
+                  </div> -->
+                  <div class="mb-3 form-group">
+                    <label for="newRole">Role</label>
+                    <select class="form-control" name="role" id="newRole">
+                      <option>ADMIN</option>
+                      <option>USER</option>
+                    </select>
                   </div>
                   <div class="mb-3 form-group">
                       <button type="submit" class="btn btn-primary mx-auto bg-success">Add new user</button>
                   </div>
                 </form>
+              </div>
+              <div class="modal fade" id="successAddUser" tabindex="-1" role="dialog" aria-labelledby="successAddUserLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="successAddUserLabel">Adding successful</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

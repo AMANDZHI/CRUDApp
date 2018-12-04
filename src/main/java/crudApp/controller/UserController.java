@@ -1,15 +1,16 @@
 package crudApp.controller;
 
-import crudApp.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @PreAuthorize("hasAnyAuthority('USER', 'ADMIN')")
 public class UserController {
 
-    @Autowired
-    private UserService service;
+    @GetMapping("/userPage")
+    public String userPage() {
+        return "userPage";
+    }
 
 }
