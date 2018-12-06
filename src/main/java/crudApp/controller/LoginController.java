@@ -18,8 +18,6 @@ public class LoginController {
         return "userPage";
     }
 
-
-
     @GetMapping("/")
     public String home() {
         return "userPage";

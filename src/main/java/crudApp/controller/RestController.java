@@ -21,12 +21,9 @@ public class RestController {
     @Autowired
     private UserService service;
 
-    private List<User> list;
-
     @GetMapping("/mainRest")
     public List<User> main() {
-        list = service.findAll();
-        return list;
+        return service.findAll();
     }
 
     @GetMapping("/findById")
